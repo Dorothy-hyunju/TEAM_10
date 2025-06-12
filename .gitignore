@@ -1,0 +1,50 @@
+# Python 관련
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ChromaDB 데이터베이스
+chroma_db/
+*.db
+*.sqlite
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# VS Code 설정
+.vscode/
+*.code-workspace
+
+# 운영체제
+.DS_Store
+Thumbs.db
+
+# 환경 변수 및 비밀 정보
+.env
+.env.local
+config_secret.py
+*.key
+*.pem
+
+# 로그 파일
+*.log
+logs/
+
+# 임시 파일
+temp/
+tmp/
+test_output/
+downloads/
+
+# 모델 파일 (용량이 큰 경우)
+models/
+*.bin
+*.safetensors
