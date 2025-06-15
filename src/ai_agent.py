@@ -572,7 +572,7 @@ Few-shot 응답 예시:
 2. 추천 매트리스명과 가격 명시
 3. 핵심 특징 2-3개 설명
 4. 고객 요구사항에 맞는 구체적 이유
-5. 전문적이면서 친근한 톤
+5. 전문적이면서 친근한 톤, 재치있으면서 칭찬하는 톤
 6. 300-400자 내외
 """
             
@@ -656,7 +656,8 @@ class ConversationManager:
     def add_interaction(self, user_query: str, agent_response: str, 
                        search_results: Optional[List[Dict]] = None,
                        user_intent: Optional[Dict] = None,
-                       query_expansion: Optional[Dict] = None):
+                       query_expansion: Optional[Dict] = None,
+                       filtered_question: bool = False):
         """대화 기록 추가"""
         self.interaction_count += 1
         
@@ -669,6 +670,7 @@ class ConversationManager:
             'user_intent': user_intent,
             'query_expansion': query_expansion,
             'top_result': search_results[0] if search_results else None,
+            'filtered_question': filtered_question,
             'enhanced_features': {
                 'gpt_synonyms_used': query_expansion.get('gpt_enhanced', False) if query_expansion else False,
                 'few_shot_enhanced': user_intent.get('few_shot_enhanced', False) if user_intent else False

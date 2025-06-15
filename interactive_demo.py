@@ -347,8 +347,12 @@ class InteractiveMattressDemo:
             return
         
         try:
+            # demo_db 폴더 생성
+            demo_db_path = Path("demo_db")
+            demo_db_path.mkdir(exist_ok=True)
+            
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f"mattress_ai_conversation_{timestamp}.json"
+            filename = demo_db_path / f"mattress_ai_conversation_{timestamp}.json"
             
             save_data = {
                 'session_start': self.session_start.isoformat(),
@@ -422,34 +426,6 @@ def main():
         print("2. data/mattress_data.json 파일이 존재하는지 확인")
         print("3. OPENAI_API_KEY 환경변수 설정 (선택사항)")
 
-def save_conversation(self):
-    """대화 기록 저장"""
-    if not self.conversation_history:
-        self.colored_print("💾 저장할 대화 기록이 없습니다.", 'yellow')
-        return
-    
-    try:
-        # demo_db 폴더 생성 (루트 디렉토리 기준)
-        demo_db_path = Path("demo_db")
-        demo_db_path.mkdir(exist_ok=True)
-        
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = demo_db_path / f"mattress_ai_conversation_{timestamp}.json"
-        
-        save_data = {
-            'session_start': self.session_start.isoformat(),
-            'session_end': datetime.now().isoformat(),
-            'total_conversations': len(self.conversation_history),
-            'conversation_history': self.conversation_history
-        }
-        
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(save_data, f, ensure_ascii=False, indent=2)
-        
-        self.colored_print(f"💾 대화 기록이 저장되었습니다: {filename}", 'green')
-        
-    except Exception as e:
-        self.colored_print(f"❌ 저장 실패: {e}", 'red')
 
 if __name__ == "__main__":
     main()

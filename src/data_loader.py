@@ -275,7 +275,7 @@ class MattressDataLoader:
             # 가격 정규화 적용
             self.mattresses = self._normalize_mattress_prices(mattress_list)
             
-            logger.info(f"매트리스 데이터 로드 완료: {len(self.mattresses)}개 (가격을 만원 단위로 정규화)")
+            logger.info(f"매트리스 데이터 로드 완료: {len(self.mattresses)}개")
             return True
             
         except Exception as e:
